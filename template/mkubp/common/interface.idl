@@ -1,0 +1,28 @@
+//一次请求最大参数个数
+#define MAX_PARAMETER_NUM  1000
+
+//服务请求接口
+struct _NAMESPACE__req_t{
+    
+    //请求类型
+    uint32_t type;
+
+    //请求参数
+    string parameters = array(MAX_PARAMETER_NUM);
+
+};
+
+
+//服务返回接口
+struct _NAMESPACE__res_t{
+
+    //返回包的状态码
+	uint32_t status ; /*0--请求全部正常返回；
+						1--内部错误；
+						2--请求字段非法*/
+	
+    //返回结果
+    string rets = array(MAX_PARAMETER_NUM),optional();
+};
+
+

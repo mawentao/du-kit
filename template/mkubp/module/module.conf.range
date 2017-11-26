@@ -1,0 +1,18 @@
+string log_path = length(128), default("./log/");
+string log_file = length(128), default("_MODULE_NAME_."); 
+uint32_t log_size = range(1000, 9999);
+uint32_t log_level = range(0, 16);
+
+struct _MODULE_NAME__t{
+    string name = length(256), default("_NAMESPACE_-_MODULE_NAME_");
+    uint32_t port = range(1024, 65536);
+    uint32_t connect_timeout = range(1000, 1000000);
+    uint32_t read_timeout;
+    uint32_t write_timeout;
+    uint32_t thread_num = range(1, 50);
+    uint32_t connect_type = range(0, 1);
+    uint32_t server_type = range(0, 2);
+    uint32_t read_buf_size;
+    uint32_t write_buf_size;
+    uint32_t mcpack_tmp_size;
+};

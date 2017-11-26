@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="app.dao.ConfigMapper" >
+
+    <!-- 查询数据表中记录总数 -->
+	<select id="getCount" resultType="int"> 
+		SELECT count(1) as num FROM c_config
+    </select>
+
+
+    <resultMap id="BaseResultMap" type="app.dao.po.ConfigPO" >
+        <id column="config_id" property="configId" jdbcType="BIGINT" />
+        <result column="config_module" property="configModule" jdbcType="INTEGER" />
+        <result column="config_key" property="configKey" jdbcType="VARCHAR" />
+        <result column="config_name" property="configName" jdbcType="VARCHAR" />
+        <result column="value_type" property="valueType" jdbcType="INTEGER" />
+        <result column="config_value" property="configValue" jdbcType="VARCHAR" />
+        <result column="units" property="units" jdbcType="VARCHAR" />
+        <result column="state" property="state" jdbcType="INTEGER" />
+        <result column="operator" property="operator" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    
+    <sql id="Base_Column_List">
+        config_id, config_module, config_key, config_name, value_type, config_value, units, 
+        state, operator, remark, create_time, update_time
+    </sql>
+    
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    	/*{\"router\":\"m\"}*/
+        select 
+        <include refid="Base_Column_List" />
+        from c_config
+        where config_id = #{configId,jdbcType=BIGINT}
+    </select>
+</mapper>

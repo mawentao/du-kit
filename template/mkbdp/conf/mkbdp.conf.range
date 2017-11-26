@@ -1,0 +1,5 @@
+string log_path = length(128), default("./log/");
+string log_file = length(128), default("_PROJECTNAME_."); 
+uint32_t log_size = range(1000, 9999);
+uint32_t log_level = range(0, 16);
+

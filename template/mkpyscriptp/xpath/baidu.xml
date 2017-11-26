@@ -1,0 +1,6 @@
+<?xml version='1.0'?>
+<body>
+  <page pattern="www.baidu.com/*" domain="www.baidu.com">
+	<attr name="title" xpath='/html/head/title'/>
+  </page>
+</body>
