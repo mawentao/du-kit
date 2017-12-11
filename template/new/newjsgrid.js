@@ -9,7 +9,7 @@ define(function(require){
             proxy: new mwt.HttpProxy({
                 //beforeLoad : store_before_load,
                 //afterLoad  : store_after_load,
-                url        : ajax.getAjaxUrl("admin&action=authQuery")
+                url : ajax.getAjaxUrl("admin&action=authQuery")
             })
         });
         grid = new MWT.Grid({

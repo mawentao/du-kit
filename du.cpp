@@ -1,13 +1,13 @@
 /***************************************************************************
  *
  * Copyright (c) 2015 Baidu.com, Inc. All Rights Reserved
- * $Id: du.cpp, v1.0.0, 2015-12-30 10:40:13, mawentao(mawt@youzu.com) Exp $
+ * $Id: du.cpp, v1.0.0, 2015-12-30 10:40:13, mawentao Exp $
  *
  **************************************************************************/
 
 /**
  * @file   du.cpp
- * @author mawentao(mawt@youzu.com)
+ * @author mawentao
  * @date   2015-12-30 10:40:13
  * @brief  du.cpp
  **/
@@ -17,6 +17,7 @@
 #include "unistd.h"
 #include <sys/stat.h>
 #include <getopt.h>
+#include <libproc.h>
 
 /**
  * @brief 分离全路径文件名的路径和文件名
@@ -61,18 +62,25 @@ static int get_exe_path(char *buf, int size)
     char fullexe[1024];
     char tmp[1024];
     char *ptr;
+    int pid = getpid();
+    //1. Linux系统可以通过/proc/pid/exe获取执行程序路径
     ptr = (char *)malloc((size_t)size);
     if(NULL != ptr){
         memset(ptr,0,size);
-        snprintf(ptr, size, "/proc/%d/exe",getpid());
+        snprintf(ptr, size, "/proc/%d/exe",pid);
     } else {
         return -1;
     }
-    readlink(ptr,fullexe,size);
-
-	snprintf(fullexe,size,"/Users/mawentao/mawt/du/output/du/xxx");
-
-    split_full_path_file(fullexe, buf, size, tmp, 1024);
+    int rs = readlink(ptr,fullexe,size);
+    if (rs>0) {
+        split_full_path_file(fullexe, buf, size, tmp, 1024);
+    }
+    //2. mac系统
+    else {
+        proc_pidpath(pid, fullexe, size);
+        split_full_path_file(fullexe, buf, size, tmp, 1024);
+    }
+    //printf("exe_path:%s\n",buf);
     return 0;
 }/*}}}*/
 

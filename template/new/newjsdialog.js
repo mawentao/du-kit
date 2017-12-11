@@ -32,7 +32,7 @@ define(function(require){
         //3. dialog open event
         dialog.on('open',function(){
             form.reset();
-            if (item.item_id) {
+            if (params.item_id) {
                 dialog.setTitle("编辑记录");
                 form.set(params);
             } else {

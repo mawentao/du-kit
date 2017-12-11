@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     exe_cmd("rm template/*.htm template/views/*.tpl");
 
     //3. copy and sed files
-    const int n=27;
+    const int n=28;
     char files[n][1024] = {
         "README.md",
         "build.sh","index.php",
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
         "hook_mobile.class.php","hook_pc.class.php",
         "z_nav.inc.php","z_setting.inc.php","z_auth.inc.php","z_about.inc.php",
 
-        "api/1/seccode.php","api/1/uc.php","api/1/admin.php",
+        "api/1/seccode.php","api/1/uc.php","api/1/admin.php","api/1/excel.php",
         "class/env.class.php","class/log.class.php","class/utils.class.php","class/validate.class.php",
         "template/header.htm","template/footer.htm",
         "template/views/z_nav.tpl",

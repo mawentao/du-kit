@@ -13,7 +13,7 @@ tables=(
     "tables/log_nginx_access.inc.php"   # nginx访问日志切割
 )
 
-for v in ${rollback_tables[@]}; do
+for v in ${tables[@]}; do
     run $v 
 done
 
