@@ -22,7 +22,7 @@ using namespace std;
 /* 打印帮助信息 */
 void print_usage(const char *p)
 {
-    printf("[usage]: %s style filename\ne.g.\n\t%s didi myppt\n", p, p);
+    printf("[usage]: %s style filename\ne.g.\n\t%s dd myppt\n", p, p);
     exit(0);
 }
 
