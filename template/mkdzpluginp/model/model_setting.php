@@ -13,7 +13,7 @@ class model__FILENAME__setting
     {
 		$setting = array (
 			// 屏蔽所有discuz页面
-			'disable_discuz' => 1,
+			'disable_discuz' => 0,
 			// 系统名称
 			'page_title' => '_FILENAME_',
 			// 版权信息

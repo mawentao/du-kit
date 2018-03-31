@@ -18,8 +18,9 @@ CXXFLAGS = -g -W -Wall -Wno-unused-parameter -pipe
 
 TARGETS = du-newsh du-newpy du-newh du-newcpp du-newclass \
           du-newhtml du-newcss \
-          du-newjs du-newjsgrid du-newjsdialog \
-          du-newphp du-newphpct du-newphptool
+          du-newjs du-newjsgrid du-newjsdialog du-newjscombox \
+          du-newphp du-newphpct du-newphptool du-newdztable \
+          du-newppt
 OBJECTS = du.o Configure.o
 
 .PHONY: all clean
@@ -48,6 +49,8 @@ du-newjsgrid : newjsgrid.o $(OBJECTS)
 	$(CPP) -o $@ $^ $(LDLIBS) 
 du-newjsdialog : newjsdialog.o $(OBJECTS)
 	$(CPP) -o $@ $^ $(LDLIBS) 
+du-newjscombox : newjscombox.o $(OBJECTS)
+	$(CPP) -o $@ $^ $(LDLIBS) 
 du-newcss : newcss.o $(OBJECTS)
 	$(CPP) -o $@ $^ $(LDLIBS) 
 du-newphp : newphp.o $(OBJECTS)
@@ -56,7 +59,10 @@ du-newphpct : newphpct.o $(OBJECTS)
 	$(CPP) -o $@ $^ $(LDLIBS)
 du-newphptool : newphptool.o $(OBJECTS)
 	$(CPP) -o $@ $^ $(LDLIBS)
-
+du-newdztable : newdztable.o $(OBJECTS)
+	$(CPP) -o $@ $^ $(LDLIBS)
+du-newppt : newppt.o $(OBJECTS)
+	$(CPP) -o $@ $^ $(LDLIBS)
 
 ##########################################################
 

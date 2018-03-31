@@ -29,8 +29,8 @@ runquery($sql);
 /*}}}*/
 
 // 用户日志
-/*{{{*/
 $table = DB::table('_FILENAME__log');
+/*{{{*/
 $sql = "CREATE TABLE IF NOT EXISTS $table ". <<<EOF
 (
 `logid` bigint unsigned NOT NULL AUTO_INCREMENT COMMENT '日志ID(自增主键)', 

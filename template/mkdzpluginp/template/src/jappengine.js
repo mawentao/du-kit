@@ -1,38 +1,43 @@
 /* jappengine.js, (c) 2016 mawentao */
 /* 全局变量 */
-var ajax,log;
+var ajax,log,frame;
 
 define(function(require){
 	ajax=require('core/ajax');
 	log=require('core/log');
+    frame=require('frame');
 	require('core/eraction');
 	var urlmap=require('core/urlmap');
 
-	// 注册controller配置(所有controller必须在此配置)
-	var controller_confs = [
-		require('controller/help').conf,
-		require('controller/index').conf,
-		require('controller/login').conf,   //!< 登录模块
-		require('controller/uc').conf       //!< 个人中心
-	];
+    // 注册controller配置(所有controller必须在此配置)
+    var controllers = [ 
+        require('controller/help'),
+//        require('controller/login'),
+        require('controller/uc'),
+        require('controller/index')
+    ];
 
 	var o={};
 	o.start=function(){
 		urlmap.start();
-		for (var i=0;i<controller_confs.length;++i) {
-			var conf=controller_confs[i];
-			//1. 添加urlmap
-			if (conf.controller) {
-				urlmap.addmap("/"+conf.controller+"/index");
-			}
-			if (conf.path && conf.path.length>0) {
-				for (var k=0;k<conf.path.length;++k) {
-					urlmap.addmap(conf.path[k]);
-				}
-			}
-			//2. 在frame中添加controller配置
-			require('frame').addcontroller(conf);
-		}
+        var reg = new RegExp("Action$");
+        for (var i=0;i<controllers.length;++i) {
+            var c = controllers[i];
+            if (c.controller) {
+                //1. 添加urlmap
+                urlmap.addmap("/"+c.controller+"/index");
+                for (var f in c) {
+                    if (reg.test(f) && typeof(c[f])=='function') {
+                        var action = f.replace(reg,'');
+                        urlmap.addmap("/"+c.controller+"/"+action);
+                    }
+                }
+                //2. 在frame中添加controller配置
+                if (c.conf) {
+                    require('frame').addcontroller(c.conf);
+                }
+            }
+        }
 	};
 	return o;
 });

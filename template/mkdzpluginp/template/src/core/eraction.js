@@ -24,8 +24,8 @@ define(function(require){
         //3. 执行action
         var cm = 'controller/'+controller;
         require([cm], function(c){
-			ajax.abortAll();
-            c[action+"Action"]();
+            ajax.abortAll();
+            c['_do_action'](action,erurl);
         });
     });
 

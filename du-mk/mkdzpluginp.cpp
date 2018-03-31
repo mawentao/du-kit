@@ -40,8 +40,8 @@ int main(int argc, char *argv[])
     exe_cmd("mkdir table;touch table/index.htm");
 
     //2. copy files
-    const int m=4;
-    char copy_files[m][1024] = {"clear_annotation","template","build.js","r.js"};
+    const int m=3;
+    char copy_files[m][1024] = {"template","build.js","r.js"};
     for (int i=0;i<m;++i) {
         snprintf(tempfile, 1024, "cp -r %s/mkdzpluginp/%s %s", du.temp_path, copy_files[i], copy_files[i]);
         exe_cmd(tempfile);
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     exe_cmd("rm template/*.htm template/views/*.tpl");
 
     //3. copy and sed files
-    const int n=28;
+    const int n=31;
     char files[n][1024] = {
         "README.md",
         "build.sh","index.php",
@@ -58,9 +58,9 @@ int main(int argc, char *argv[])
         "hook_mobile.class.php","hook_pc.class.php",
         "z_nav.inc.php","z_setting.inc.php","z_auth.inc.php","z_about.inc.php",
 
-        "api/1/seccode.php","api/1/uc.php","api/1/admin.php","api/1/excel.php",
+        "api/1/seccode.php","api/1/uc.php","api/1/admin.php","api/1/excel.php","api/1/dict.php",
         "class/env.class.php","class/log.class.php","class/utils.class.php","class/validate.class.php",
-        "template/header.htm","template/footer.htm",
+        "template/header.htm","template/footer.htm","template/admin.htm","template/Error.htm",
         "template/views/z_nav.tpl",
         "template/views/z_setting.tpl",
         "template/views/z_auth.tpl",
@@ -73,10 +73,11 @@ int main(int argc, char *argv[])
     }
 
     //4. copy and sed and rename files
-    const int k=10;
+    const int k=11;
     char csr_files[k*2][1024] = {
         "discuz_plugin.xml","discuz_plugin_%s.xml",
         "datatool.inc.php", "%s.inc.php",
+        "admin.inc.php", "admin.inc.php",
         "template/datatool.htm","template/%s.htm",
         "model/model_nav_setting.php", "model/model_%s_nav_setting.php",
         "model/model_seccode.php","model/model_%s_seccode.php",

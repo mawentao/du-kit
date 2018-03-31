@@ -7,7 +7,7 @@ define("_HEADFILENAME__PLUGIN_PATH", dirname(__FILE__));
 chdir("../../../");
 
 $modules = array (
-    'seccode','uc',
+    'seccode','uc','dict',
     'admin',
 );
 

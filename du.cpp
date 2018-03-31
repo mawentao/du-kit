@@ -274,6 +274,21 @@ void gen_file(const char *tempfile, const char *destfile, du_t &du, bool relace)
     exe_cmd(buf);
 }
 
+/** 拷贝文件 */
+void copy_file(const char *tempfile, const char *destfile, bool relace)
+{
+    //1. 判断目标文件是否已存在
+    char buf[1024];
+    if (is_file(destfile) && !relace) {
+        snprintf(buf, 1024, "file already exists: %s [ignore]", destfile);
+        print_exe(buf);
+        return;
+    }
+    //2. 拷贝文件
+    snprintf(buf, 1024, "cp %s %s", tempfile, destfile);
+    exe_cmd(buf);
+}
+
 /* 解析命令行参数，读取配置并初始化 */
 int parse_args(int argc, char *argv[], du_t &du)
 {

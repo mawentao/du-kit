@@ -17,7 +17,7 @@
 
 #include "Configure.h"
 
-#define VERSION "v3.5 (mawentao@baidu.com) 2015-12-30"
+#define VERSION "v3.6 (mawentao) 2017-12-21"
 #define MAX_FILENAME_LEN 1024
 
 
@@ -83,6 +83,9 @@ void generate_class_name(const char *filename, char *classname);
 
 /** 生成文件 */
 void gen_file(const char *tempfile, const char *desfile, du_t &du, bool relace=false);
+
+/** Copy文件 */
+void copy_file(const char *tempfile, const char *desfile, bool relace=false);
 
 /** 判断是否是work_root */
 bool is_work_root(const char *path);

@@ -1,21 +1,13 @@
-/* 默认controller, (c) 2016 mawentao */
 define(function(require){
-	var frame=require('frame');
-    var o={};
-	var control='index';
+    /* 默认controller */
+    var BaseController = require('core/BaseController');
+    var o = new BaseController('index');
+    
+    o._before_action=function(erurl){};
+    o._after_action=function(erurl){};
 
-	o.conf = {
-		controller: control,
-		path: [
-			'/'+control+'/index'
-		]
-	};
-
-	// 默认action
-	o.indexAction=function() {
-		require('./login').check();
-		frame.showpage('welcome');
-	};
-
-	return o;
+    o.indexAction=function() {
+        window.location = '#/help';
+    };  
+    return o;
 });
