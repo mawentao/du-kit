@@ -43,8 +43,9 @@ try {
 function getoptions()
 {
     $res = array();
-    $key = mfaq_validate::getNCParameter('key','key','string',1024);
+    $key = _FILENAME__validate::getNCParameter('key','key','string',1024);
     switch ($key) {
+        //case 'cate': return C::t('#_FILENAME_#_FILENAME__spu')->getOptions();
         default: break;
     }   
     return $res;

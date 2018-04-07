@@ -6,6 +6,26 @@ define("IN__HEADFILENAME__API", 1);
 define("_HEADFILENAME__PLUGIN_PATH", dirname(__FILE__));
 chdir("../../../");
 
+////////////////////////////////////////////////////////
+// table类适配API
+if (preg_match('/^t_/i',$_GET['module'])) {
+    require './source/class/class_core.php';
+    $discuz = C::app();
+    $discuz->init();
+    require_once _HEADFILENAME__PLUGIN_PATH."/class/env.class.php";
+    try {
+        $t = '#xcoa#'.substr($_GET['module'],2);
+        $action = isset($_GET['action']) ? $_GET['action'] : ""; 
+        $res = C::t($t)->$action();
+        _FILENAME__env::result(array('data'=>$res));
+        //die($t);
+    } catch (Exception $e) {
+        _FILENAME__env::result(array('retcode'=>100010,'retmsg'=>$e->getMessage()));
+    }   
+}
+////////////////////////////////////////////////////////
+
+
 $modules = array (
     'seccode','uc','dict',
     'admin',

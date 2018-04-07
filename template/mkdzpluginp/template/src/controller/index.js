@@ -7,7 +7,7 @@ define(function(require){
     o._after_action=function(erurl){};
 
     o.indexAction=function() {
-        window.location = '#/help';
+        window.location = '#/admin';
     };  
     return o;
 });

@@ -1,7 +1,7 @@
 define(function(require){
-    /* 帮助中心 */
+    /* 管理中心 */
     var BaseController = require('core/BaseController');
-    var o = new BaseController('help');
+    var o = new BaseController('admin');
 
     o._before_action=function(erurl){};
     o._after_action=function(erurl){};
@@ -25,9 +25,8 @@ define(function(require){
 
     // 框架使用
     o.startAction=function(){
-        var code = '框架使用'+
-
-            '<div></div>';
+        var posarr = [{name:'框架使用',href:'#/admin/start'}];
+        var code = posnav.get(posarr)+'<div id="admin-start-div" class="gridfill">框架使用</div>';
         frame.showpage(code);
     };
 

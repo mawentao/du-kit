@@ -43,7 +43,7 @@ define(function(require){
 		if (!controller_confs[controller]) return;  //!< 未添加过此controller的配置
 		var conf = controller_confs[controller];
         //3. 选中顶部导航菜单
-        //jQuery("#menu-"+controller).addClass('active');
+        jQuery("#menu-"+controller).addClass('active');
 		//4. 显示controller布局
 		// 左导航布局
 		if (conf.menu && conf.menu.length>0) {
@@ -52,6 +52,7 @@ define(function(require){
 			var code = '<div id="frame-center" style="left:0;"></div>';
 			jQuery('#frame-body').html(code);
 		}
+        controller_active = controller;
     };
 
     // 显示页面

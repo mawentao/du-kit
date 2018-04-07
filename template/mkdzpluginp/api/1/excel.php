@@ -63,9 +63,12 @@ function upload()
         $item = array();
         for ($col=0; $col<$colsnum; $col++) {
             $column = $colkeys[$col];
-            $v = $sheet->getCell($column.$row)->getValue();
-            $item[] = $v; 
+            // $v = $sheet->getCell($column.$row)->getValue();
+            $v = $sheet->getCell($column.$row)->getFormattedValue();
+            $item[] = trim($v); 
         }
+        $lnstr = implode('',$item);
+        if ($lnstr=='') continue;   //!< 空行去掉
         $res['root'][] = $item;
     } 
     $res['cols_count'] = $colsnum;
